@@ -1,0 +1,34 @@
+<div class = "container">
+    <form [formGroup]="formularioRegister" (ngSubmit)="register()">
+        <h1>Registre invisible 👻</h1>
+        <div class="mb-3">
+            <label for="email" class="form-label">Correu electrònic:  </label>
+            <input [ngClass]="{'is-invalid': hasError('email','required') || hasError('email','email')}"
+            type="email" class="form-control" id="email" formControlName="email">
+            <div class="text-danger" *ngIf="hasError('email','required')">Correu electrònic obligatori.</div>
+            <div class="text-danger" *ngIf="hasError('email','email')">Correu electrònic invàlid.</div>
+        </div>
+        <div class="mb-3">
+            <label for="username" class="form-label">Nom d'usuari:  </label>
+            <input [ngClass]="{'is-invalid': hasError('username','required') || hasError('username','minlength')}"
+            type="username" class="form-control" id="username" formControlName="username">
+            <div class="text-danger" *ngIf="hasError('username','required')">Nom d'usuari obligatori.</div>
+            <div class="text-danger" *ngIf="hasError('username','minlength')">Nom d'usuari invàlid, ha de tenir com a mínim 8 caràcters.</div>
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Contrasenya:  </label>
+            <input [ngClass]="{'is-invalid': hasError('password','required') || hasError('password','minlength')}"
+            type="password" class="form-control" id="password" formControlName="password">
+            <div class="text-danger" *ngIf="hasError('password','required')">Contrasenya obligatòria.</div>
+            <div class="text-danger" *ngIf="hasError('password','minlength')">Contrasenya invàlida, ha de tenir com a mínim 8 caràcters.</div>
+        </div>
+        <!--<div class="mb-3">
+            <label for="age" class="form-label">Edat:  </label>
+            <input [ngClass]="{'is-invalid': hasError('age','required') || hasError('age','minlength')}"
+            type="age" class="form-control" id="age" formControlName="age">
+            <div class="text-danger" *ngIf="hasError('age','required')">Edat obligatòria.</div>
+            <div class="text-danger" *ngIf="hasError('age','pattern')">Només pots introduir números com a edat.</div>
+        </div>-->
+        <button type="submit" class="btn btn-primary">Registrar</button>
+    </form>
+</div>
